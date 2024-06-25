@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*">
+    <input type="text" name="name" placeholder="Вкажіть назву">
+    <input type="number" name="price" placeholder="Вкажіть ціну">
+    <input type="number" name="discount" placeholder="Вкажіть знижку">
+    <input type="number" name="count" placeholder="Вкажіть кількість">
+    <textarea name="description" placeholder="Вкажіть опис"></textarea>
+    <button type="submit">Підтвердити</button>
+</form>
+    {% for product in products %}
+        <hr>
+        <img src="{{ url_for('shop_app.static', filename='static/images/' + product.name + '.png') }}" alt="{{ product.name }}">
+        <h4>Change image:</h4>
+        <input type="file" name="image" accept="image/*">
+        <h2>Назва продукту: {{ product.name }}</h2>
+        <button class="edit">Edit Product</button>
+        <form method="post">
+            <button name='del' value="{{ product.id }}">Delete product</button>
+        </form>
+        <hr>
+    {% endfor %}
+{% endblock %}
+
+

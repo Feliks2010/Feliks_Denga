@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home page
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('registration.static', filename = 'css/style.css')}}">
+    <form method="post">
+        <h1 id="login" class="inter">Login</body></h1>
+        <h1 id="email" class="inter">Email</body></h1>
+        <h1 id="password" class="inter">Password</body></h1>
+        <h1 id="password_confirmation" >Password confirmation</body></h1>
+        <h1 id="circle"> </h1>
+        <input id="login_button" type="text" name="name"></body>
+        <input id="email_button" type="text" name="email"></body>
+        <input id="password_button" type="text" name="password"></body>
+        <input id="password_confirmation_button" type="text" name="password confirmation"></body>
+        <h1 id="REGISTRATION">REGISTRATION</h1>
+        <button type="submit">send</button>
+    </form>
+{% endblock %}
+    <!-- Кнопка для перенаправлення -->
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+
+
+{% extends "base.html" %}
+
+{% block title %} 
+    Shop Page 
+{% endblock %}
+
+{% block content %}
+    <style>
+        #counter {
+            position: absolute;
+            left: 1000px;
+            top: 100px;
+        }
+    </style>
+
+    
+    <script src="{{ url_for('shop_app.static', filename = 'js/set_cookie.js') }}" defer></script>
+
+
+    
+
+    {% for product in products %}
+    <div class="product" id="product-{{ product.id }}">
+        <h1 id="emnist">ЄМНІСТЬ:</h1>
+        <h1 id="product_name">{{ product.name }}</h1>
+        <h2 class ="price" id = "{{product.id}}">{{ product.price }} грн</h2>
+        {% if product.start_count == 1 or product.start_count == None %}
+            <img id="product" src="{{ url_for('shop_app.static', filename= 'images/' + product.name + '.png') }}" alt="">
+        {% elif "https" in product.start_count %}
+            <img id = "product" src="{{ product.start_count }}" alt="">
+        {% else %}
+            <img id="product" src="{{ url_for('shop_app.static', filename= 'images/' + product.name + '.png') }}" alt="">
+        {% endif %}
+        <img id="availability" src="{{ url_for('shop_app.static', filename='images/availability.png') }}" alt="">
+
+        <button class= "buy" id = "{{ product.id }}" onclick="incrementCounter()">Купити</button>
+        <button id="gb" onclick="addCSS()">256Гб</button> 
+        <button id="gb1" onclick="changeColor()">512Гб</button>
+        <button id="gb2">1Тб</button>
+        <h1 class = "discount" id = "discount">Знижка {{product.discount}}%</h1>
+        <h1 class = "priceWithoutDiscount" >{{product.price}} грн</h1>
+    
+    </div>
+    {% endfor %}
+    <h1 id = "counter">0</h1>
+    <link rel="stylesheet" href="{{ url_for('shop_app.static', filename='css/style.css') }}">
+    <div class = "inter">
+        <h1 id = "first">{{first_name}}</h1>
+        <a id="home" href="/Authorization/Success_Authorization/">HOME</a>
+        <a id="shop" href="/Shop/">SHOP</a>
+        <a id="basket" href="/Basket/">CART</a>
+        <a id="contacts" href="/Contacts/">CONTACTS</a>
+        {% if is_admin == True %}
+            <a href="/AdminPage/" id = "admin">ADMIN</a>
+        {% endif %}
+        <h1 class = "count_product"></h1>
+    </div>
+    
+
+
+{% endblock %}

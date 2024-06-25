@@ -1,0 +1,99 @@
+#login {
+    position: absolute;
+    top: 55px;
+    right: 845px;
+    font-size: 24px;   
+    font-weight: 370px;
+}
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#login_button{
+    position: absolute;
+    top: 104px;
+    right: 535px;
+    width: 370px;
+    border-radius: 10px;
+    height: 56;
+
+}
+#email {
+    position: absolute;
+    top: 165px;
+    right: 845px;
+    font-size: 24px;   
+    font-weight: 370px;
+    
+}
+#email_button{
+    position: absolute;
+    top: 214px;
+    right: 535px;
+    width: 370px;
+    border-radius: 10px;
+    height: 56;
+}
+
+#password{
+    position: absolute;
+    top: 275px;
+    right: 805px;
+    font-size: 24px;
+    font-weight: 370px;
+}
+#password_button{
+    position: absolute;
+    top: 324px;
+    right: 535px;
+    width: 370px;
+    border-radius: 10px;
+    height: 56;
+}
+#password_confirmation {
+    position: absolute;
+    top: 385px;
+    right: 665px;
+    font-size: 24px;
+    font-weight: 370px;
+}
+
+#password_confirmation_button {
+    position: absolute;
+    top: 434px;
+    right: 535px;
+    width: 370px;
+    border-radius: 10px;
+    height: 56;
+}   
+button {
+    text-align: center;
+    width: 204px;
+    height: 56px;
+    position: absolute;
+    top: 507px;
+    right: 618px;
+    font-size: 24;
+    border-radius: 10px;
+}
+#circle {
+    position: absolute;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black; 
+    border-left: 3px solid black; 
+    border-right: 3px solid black; 
+    padding: 10px; 
+    width: 450;
+    height: 540;
+    border-radius: 25px;
+    right: 480px;
+}   
+#REGISTRATION {
+    border-bottom: 3px solid black;
+    position: absolute;
+    right: 15px;
+    top: -15px;
+    font-size: 24px;
+}

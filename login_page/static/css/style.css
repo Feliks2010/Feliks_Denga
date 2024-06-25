@@ -1,0 +1,59 @@
+#circle {
+    position: absolute;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black; 
+    border-left: 3px solid black; 
+    border-right: 3px solid black; 
+    padding: 10px; 
+    width: 448px;
+    height: 355px;
+    border-radius: 25px;
+    right: 496px;
+    top: 137.5px;
+}   
+
+#login {
+    position: absolute;
+    width: 370px;
+    height: 27px;
+    top: 181px;
+    right: 535px;
+    font-size: 24px;
+}
+
+#login_button {
+    position: absolute;
+    width: 370px;
+    height: 56px;
+    top: 230px;
+    right: 535px;
+    border-radius:10px ;
+}
+#password {
+    position: absolute;
+    width: 370px;
+    height: 27px;
+    top: 297px;
+    right: 535;
+}
+#password_button {
+    position: absolute;
+    width: 370px;
+    height: 56px;
+    top: 346px;
+    right: 535px;
+    border-radius: 10px;
+}
+#send {
+    position: absolute;
+    width: 204px;
+    height: 56px;
+    top: 413px;
+    right: 618px;
+    font-size: 30;
+    border-radius: 10px;
+}
+.inter{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}

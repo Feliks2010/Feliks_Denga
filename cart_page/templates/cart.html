@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cart page
+{% endblock %}
+
+{% block content %}
+    <div class = "inter">
+        <h1 id = "name1">{{first_name}}</h1>
+        <a id="home" href="/Authorization/Success_Authorization/">HOME</a>
+        <a id="shop" href="/Shop/">SHOP</a>
+        <a id="basket" href="/Basket/">CART</a>
+        <a id="contacts" href="/Contacts/">CONTACTS</a>
+        <!-- Створюємо умову для перевірки is_admin -->
+        {% if is_admin == True %}
+            <a href="/AdminPage/" id = "admin">ADMIN</a>
+        {% endif %}
+        {% if products %}
+        <button id = "buy">ПЕРЕЙТИ ДО ОФОРМЛЕННЯ</button>
+        <h1 class = "allPrice"></h1>
+        <h1 class = "allCount"></h1>
+        <h1 class = "allDiscount"></h1>
+        <h1 class = "allPriceWithoutDiscount"></h1>
+        <h1 class = "znigka">Знижка</h1>
+        <h1 class = "totalCount">Загальна сума</h1>
+        <h1 class = "count_product">0</h1>
+        {% for product in products %}
+            <div class="product" id="product-{{ product.id }}">
+                <h2 class ="price" id = "{{product.id}}">{{ product.price }} грн</h2>
+                {% if product.start_count == 1 or product.start_count == None %}
+                    <img class="product-img" src="{{ url_for('shop_app.static', filename='images/' + product.name + '.png') }}" alt="">
+                {% elif "https" in product.start_count %}
+                    <img class = "product-img" src="{{ product.start_count }}" alt="">
+                {% else %}
+                    <img class="product-img" src="{{ url_for('shop_app.static', filename='images/' + product.name + '.png') }}" alt="">
+                {% endif %}
+    
+
+                <h1 class="name">{{ product.name }}</h1>
+                <button class="plus" id="plus-{{ product.id }}" onclick = "func()">+</button>  
+                <h1 class="product_count">{{ product.gb1 }}</h1>
+                <button class="minus" id="minus-{{ product.id }}" onclick="func()">-</button>
+                <h1 class = "discount" id = "discount">Знижка {{product.discount}}%</h1>
+                <h1 class = "priceWithoutDiscount" >{{product.price}} грн</h1>
+            </div>            
+        {% endfor %}
+    
+    {% endif %}
+    <div  class = "frame-cart" style="display: none;">
+        <form method="POST" enctype="multipart/form-data" class = 'form'>
+            <h1 id = "zamovlennya">ОФОРМЛЕННЯ ЗАМОВЛЕННЯ</h1>
+            <h1 id = "name">ІМ'Я:</h1>
+            <input type="text"  name = "name" id = "name-input">
+            <h1 id = "surname">ПРІЗВИЩЕ:</h1>
+            <input type="text"  name = "surname" id = "surname-input">
+            <h1 id = "phone">ТЕЛЕФОН ЗАМОВНИКА:</h1>
+            <input type="text" name = "phone" id = "phone-input">
+            <h1 id = "email">EMAIL ЗАМОВНИКА:</h1>
+            <input type="text" name = "email" id = "email-input">
+            <h1 id = "city">МІСТО ОТРИМУВАЧА:</h1>
+            <input type="text" name = "city" id = "city-input">
+            <h1 id = "department">ВІДДІЛЕННЯ НОВОЇ ПОШТИ:</h1>
+            <input type="text" name = "department" id = "department-input">
+            <h1 id = "wish">ДОДАТКОВІ ПОБАЖАННЯ:</h1>
+            <input type="text" name = "wish" id = "wish-input">
+            <button type="submit" id = "send">SEND</button>
+        </form>
+    </div>
+    </div>
+
+    <link rel="stylesheet" href="{{url_for('cart.static', filename = 'css/style.css')}}">
+
+
+    <script src= "{{ url_for('cart.static', filename = 'js/workCookies.js') }}"></script>
+
+    {% endblock %}

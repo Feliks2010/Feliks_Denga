@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <style>
+            #counter {
+                position: absolute;
+                left: 1000px;
+                top: 100px;
+            }
+        </style>
+        <h1 id = "addProduct">ДОДАТИ ПРОДУКТ</h1>
+        <img id = "plus" src="{{url_for('admin.static', filename = 'images/plus.png')}}" alt="">
+        {% for product in products %}
+        <div class="product" id="product-{{ product.id }}">
+            <h1 id="emnist">ЄМНІСТЬ:</h1>
+            <h1 id="product_name">{{ product.name }}</h1>
+            <h2 class="price" id="{{product.id}}">{{ product.price }} грн</h2>
+            <form method="POST">
+                <button id="availability" name = "del" value = "{{product.id}}">
+                    <img src="{{ url_for('admin.static', filename='images/delete.png') }}" alt="">
+                </button>
+                
+            </form>
+            {% if product.start_count == 1 or product.start_count == None %}
+                <img id = "product" src="{{ url_for('shop_app.static', filename='images/' + product.name + '.png') }}" alt="">
+            {% elif "https" in product.start_count %}
+                <img id = "product" src="{{ product.start_count }}" alt="">
+            {% else %}
+                <img id = "product" src="{{ url_for('shop_app.static', filename='images/' + product.name + '.png') }}" alt="">
+            {% endif %}
+
+            <img class="pensilForImage" src="{{ url_for('admin.static', filename='images/pensil.png') }}" id = "{{product.id}}" alt="">
+            
+            <button class="buy" id="{{ product.id }}" onclick="incrementCounter()">Купити</button>
+            <button id="gb" onclick="addCSS()">{{ product.description }}</button> 
+            <button id="gb1" onclick="changeColor()">{{ product.gb }}</button>
+            <button id="gb2">{{ product.gb1 }}</button>
+            <h1 class="discount" id="discount">Знижка {{product.discount}}%</h1>
+            <h1 class="priceWithoutDiscount">{{product.price}} грн</h1>
+
+            <img class="pensilForName" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
+            <img class="pensilFor" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
+            <img class="pensilForDiscount" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
+            <img class="pensilForGb" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
+            <img class="pensilForGb1" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
+            <img class="pensilForGb2" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
+
+            <div class="frame-modal" style= "display: none;">
+                <form method="post" class="modal" enctype="multipart/form-data"> 
+                    <h1 class = "changeH1"></h1> 
+                    <input type="" name="" id="" accept="" class="input-data">
+                    <button type="submit" name="submit-change" class="submit-change"  id = "{{product.id}}"value="">Save</button>
+                </form>
+            </div>
+                 
+                <!-- <script src = "{{ url_for('admin.static', filename = 'js/editImage.js') }}" defer></script> -->
+        
+        </div>
+        {% endfor %}
+        <h1 id="counter">0</h1>
+        <link rel="stylesheet" href="{{ url_for('admin.static', filename='css/style.css') }}">
+        <div class="inter">
+            <h1 id="first">{{first_name}}</h1>
+            <a id="home" href="/Authorization/Success_Authorization/">HOME</a>
+            <a id="shop" href="/Shop/">SHOP</a>
+            <a id="basket" href="/Basket/">CART</a>
+            <a id="contacts" href="/Contacts/">CONTACTS</a>
+            <a id = "admin"href="/AdminPage/">ADMIN</a>
+            <h1 class="count_product"></h1>
+            <div class = "frame-form" style="display: none;">
+                <form method="POST" enctype="multipart/form-data"  class = 'form'>
+                    <h1 id = "newProduct">NEW PRODUCT</h1>
+                    <h1 id = "imageProduct">IMAGE PRODUCT:</h1>
+                    <input id = "input-image" type="file" name="image" accept="image/*" required>
+                    <h1 id = "nameProduct">NAME PRODUCT:</h1>
+                    <input id = "input-name" type="text" name="name"  required>
+
+                    <h1 id = "descriptionProduct">DESCRIPTION PRODUCT:</h1>
+                    <textarea id = "input-description" name="description"  required></textarea>
+                    
+                    <h1 id = "priceProduct">PRICE PRODUCT:</h1>
+                    <input id = "price-input" type="number" name="price"  required step="0.01">
+                    <h1 id = "discountProduct">DISCOUNT PRODUCT:</h1>
+                    <input id = "discount-input" type="number" name="discount"  required>
+                    <h1 id = "countProduct">COUNT PRODUCT:</h1>
+                    <input id = "count-input"type="number" name="count1"  required>
+
+                    <button id = "buy"type="submit">SEND</button>
+                </form>
+            </div>
+
+        </div>
+
+    <script src = "{{ url_for('admin.static', filename = 'js/admin.js') }}" defer></script>
+{% endblock %}

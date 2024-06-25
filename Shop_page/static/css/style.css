@@ -1,0 +1,181 @@
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#home_page {
+    font-size: 100px;
+}
+#home {
+    width: 177px;
+    height: 44px;
+    position: absolute;
+    left: 34px;
+    top: 18px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+#name {
+    position: absolute;
+    right: 34px;
+    top: 18px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+#shop{
+    position: absolute;
+    width: 177px;
+    height: 44px;
+    left: 221px;
+    top: 18px;
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+}
+
+#basket {
+    width: 177px;
+    height: 44px;
+    position: absolute;
+    top: 18px;
+    left: 408px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+#contacts{
+    position: absolute;
+    width: 177px;
+    height: 44px;
+    left: 595px;
+    top: 18px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+#product_name {
+    position: relative;
+    margin-left: 364.5px;
+    top: 70px;
+    height: 0px;
+}
+h2 {
+    position: relative;
+    height:10px;
+    margin-left: 364.5px;
+    top: 122px;
+    font-size: 32px;
+}
+#product{
+    position: relative;
+    margin-left: 74.5px;
+    border-right: 3px solid black ;
+    padding: 10px;
+    width:250.18px;
+    height: 305px;
+}
+.buy {
+    position: relative;
+    top: -148px;
+    left: 15px;
+    width: 149px;
+    height: 55px;
+    background: #EFCB4A;
+    border-radius: 15px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+} 
+
+
+#gb {
+    position: absolute;
+    width: 75px;
+    height: 30px;
+    margin-top: 276.5px;
+    left: 364.5px;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bolder;}
+
+#gb1 {
+    position: absolute;
+    width: 75px;
+    height: 30px;
+    margin-top: 276.5px;
+    left: 449.5px;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bolder;
+}
+#gb2 {
+    position: absolute;
+    width: 75px;
+    height: 30px;
+    margin-top: 276.5px;
+    left: 534.5px;
+    border-radius: 15px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bolder;
+}
+#emnist {
+    position: absolute;
+    margin-top: 275px;
+    left: 364.5px;
+}
+
+#availability {
+    position: absolute;
+    margin-top: 276.5px;
+    left: 1097.5px;
+}
+
+
+#counter {
+    color: white;
+}
+#first {
+    position: absolute;
+    top:3px;
+    right: 26.5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.inter{
+    font-family: 'Inter', sans-serif;
+}
+
+#discount {
+    position: relative;
+    top: -285px;
+    font-size: 20px;
+    left: 364.5px;
+    font-weight: 700;
+}
+.priceWithoutDiscount {
+    position: relative; 
+    left: 364.5px; 
+    top: -350px;    
+    font-size: 22px;
+    font-weight: bold;
+}
+.price {
+    position: relative;
+    margin-left: 364.5px;
+    top: 135px;
+
+}
+#admin {
+    position: absolute;
+    top: 18px;
+    left: 781.5px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
