@@ -1,8 +1,0 @@
-.form, img{
-    display: flex;
-    width: 500px;
-    flex-direction: column;
-}
-.form *,  img{
-    margin-top: 20px;
-}

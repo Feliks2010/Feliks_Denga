@@ -32,9 +32,9 @@
             <img class="pensilForImage" src="{{ url_for('admin.static', filename='images/pensil.png') }}" id = "{{product.id}}" alt="">
             
             <button class="buy" id="{{ product.id }}" onclick="incrementCounter()">Купити</button>
-            <button id="gb" onclick="addCSS()">{{ product.description }}</button> 
-            <button id="gb1" onclick="changeColor()">{{ product.gb }}</button>
-            <button id="gb2">{{ product.gb1 }}</button>
+            <button id="gb" onclick="addCSS()">{{product.description}}</button> 
+            <button id="gb1" onclick="changeColor()">{{product.gb}}</button>
+            <button id="gb2">1 Тб</button>
             <h1 class="discount" id="discount">Знижка {{product.discount}}%</h1>
             <h1 class="priceWithoutDiscount">{{product.price}} грн</h1>
 
