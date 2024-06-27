@@ -257,3 +257,264 @@ flask --app settings db upgrade
 
 Завдяки цьому проєкту ми навчилися **створювати сайти**, **працювати з міграціями**, **повторили телебота** та **почали вивчати JavaScript** та **HTML**.
 Я вважаю, що проєкт **дуже корисний**, особливо для **новачків**, таких як ми, бо цей проєкт має усі **необхідні можливості** для **створення** **повноцінного вебсайту для замовника**. Іноді було важко працювати над ним, але проєкт дуже **важливий** і **корисний**, особливо для **новачків**. Особисто для мне цей проєкт **дуже корисний**.
+
+# Shop-Site
+
+---
+## This project was created by:
+
+**Vashchenko Artem**: https://github.com/VashchenkoArtem
+
+**Lyalin Artem**: https://github.com/artem409
+
+**Felix Denga**: https://github.com/Feliks2010
+
+---
+
+#### **Shop-Site** is an online store where you can:
+- **Sign up**
+- **Sign in** to your account
+- **Buy** products
+- **Remove** or **add** a product (if you are an **administrator**)
+- **Contact** the seller
+
+### Alternative demo version of the site: https://artem124509.pythonanywhere.com/
+
+This project is very useful for **newbies** because this project
+**contains** all necessary features for **website creation** on **order**
+
+Especially for our **team**, this project is **useful** because during its creation we learned to **work** with **migrations** and **github**, create **sites** and * *deploy** them on **pythonanywhere** and **communicate** in a team
+
+The following modules were used in the project: 
+- **flask** (site creation)
+- **pandas** (for reading data from Excel)
+- **flask_SQlalchemy, flask_migrate** (creation of migrations)
+- **flask_login** (user authorization)
+- **flask_mail** (sending an order message to the mail)
+- **telebot** (creating a bot in Telegram)
+- **os** (setting paths)
+
+### Instructions for launching the project on a computer (locally):
+1. Go to the **link**: https://github.com/VashchenkoArtem/Shop-Site and click on the **Code** button
+![alt text](image.png)
+2. **Click** in the open window **Download ZIP**
+![alt text](image-2.png)
+3. **Unzip** the zip folder
+4. **Start Visual Studio Code** 
+5. **Click** the **Open Folder** button
+![alt text](image-5.png)
+6. **Open** the directory where you **saved** the **project** folder
+7. **Go** to the file **manage.py**
+![alt text](image-1.png)
+8. **Open** Terminal by clicking on **Terminal**
+![alt text](image-3.png)
+9. **Install** all necessary **modules** if they are not installed
+
+```python
+pip install flask flask_sqlalchemy flask_migrate flask_login pandas os flask_mail telebot
+```
+10. **Click** on the **triangle** in the upper right corner of the **screen**
+![alt text](image-6.png)
+
+11. When new messages appeared in the **terminal**, **hold down ctrl** on the keyboard and **click** on the link to the **site**
+![alt text](image-7.png)
+
+### Instructions for starting a project on pythonanywhere
+1. **Go** to the **site** pythonanywhere
+2. **Register** there, if not already registered
+3. **Create** a new **bash** console
+![alt text](image-8.png)
+4. **Clone** the repository. We write in the console:
+```
+git clone https://github.com/VashchenkoArtem/Shop-Site
+```
+5. **We create** a virtual environment
+```
+mkvirtualenv <Name of virtual environment> --python=python3.10
+```
+6. **Install** all necessary modules
+```
+pip install flask flask_sqlalchemy flask_migrate flask_login pandas flask_mail telebot
+```
+7. **Exit** the console by **clicking** the arrow to the left in the upper left corner and **go** to the **Web** tab
+![alt text](Web.png)
+
+8. Create an application by clicking the **Add a new app** button and then **click** **Next**
+![](newweb.png)
+9. **Choose** the **Flask** framework and click **Next**
+![](framework.png)
+10. **Select** version **Python 3.10**
+![](Version.png)
+11. **Click Next**
+12. **Scroll** a little below and find **Working directory** and **click** on the directory that is located a little **to the right**
+<img src = "Working directory.png">
+
+13. **Change** the directory to:
+```
+/home/Your Account Name/Shop-Site
+```
+14. Below **find the WSGI configuration file** and **click** on the link **on the right**
+![](WSGI.png)
+15. **line 16** of the code **change** to:
+```
+from project.settings import project_login as application
+```
+16. **Click** on the **Save** button
+![](Save.png)
+
+17. **Exit** the code through the arrow in the upper left corner of the screen, **find Enter path to a virtualenv, if desired** and **click** on it
+![](Virtualenv.png)
+18. In the **enter** field:
+```
+/home/Your Account Name/.virtualenvs/site_venv
+```
+19. **Click on the checkmark**
+![](Virtualenvdirectory.png)
+20. **Restart** the project
+![](reload.png)
+21. **Click** on the name of our **project**
+![](debug.png)
+
+### The structure of the project with a description of each of its applications
+![](explorer.png)
+- The **main_page** application is responsible for displaying the **main page** and the **ability** to go to the **registration** or **authorization** page
+- **registration_page** application is responsible for **user registration**
+- The **success_registration** application is responsible for **displaying a page** with a message that the user has **successfully** registered and a link to the **main page**
+- **login_page** application is responsible for **user authorization**
+- The **success_authorization** application is responsible for **successful authorization** of the user and **transition** to the **main page**
+- The **Shop_page** application is responsible for the **product display** page with the possibility of **moving** them to the cart
+- The **cart_page** application is responsible for **displaying the products in the cart** and the ability to **buy them or contact the seller**
+- The **admin_page** application has a similar function to the **Shop_page** application, but differs in that in **admin_page** you can **add a product**, **delete a product** or **change its data* *
+- The **bot_app** folder is responsible for the **telegram bot**
+- The **project** folder is responsible for **creating the main Flask application, creating migrations, for the basic html template, adding links to other applications and registering applications to the main Flask application**
+- The file **manage.py** is responsible for **starting** the project
+- The file **README.md** is responsible for the description of the project
+
+### An example of creating the main application
+1. **Create** the **settings.py** file and **fill** it according to the example:
+![](settings.png)
+2. **Create** the **templates** folder and in it the **base.html** file, which we fill in approximately as follows:
+![](base.png)
+3. **Create** a **urls** file, add **links** to each application and **registration** to the main application. **Example** of creating a file with **adding a link** and **registration** to the main application:    
+![](urls.png)
+4. If **authorization** and **registration** are present in the **project**, then we **create** the **login_manager** file according to the example:
+![](login.png)
+5. If you want to **send messages to mail**, you will need to **create** a **mail_config.py** file. **Example** of its creation:
+![](mail.png)
+6. The **last file** that must be **created** for the **main application** is the **__init.py__** file in which we **import** everything from the **urls.py** file , **main application** from the file **settings.py** and everything from the file **login_manager.py**
+
+### An example of creating a Blueprint application
+1. Creating **app.py**, in which we create an object with the **Blueprint** class. We set the parameters **name, import_name, template_folder, static_folder** to it. Example **app.py**
+![](app.png)
+1. Creating a **folder with an html file**, in which we first **export the basic template** created in the **main project**, and then use **jinja** to write the required code
+![](html.png)
+1. Creating a **views.py** file in which we **create a function** to **display** the page
+![](views.png)
+1. The **init** file into which we import the **Blueprint** object from the **app.py** file, and import the **display** function from **views.py**
+
+### HTML Project templates
+- In the template **home.html** we created 2 links - **REGISTRATION** and **AUTHORIZATION** and text with class **centered** 
+![](home.png)
+- In the **register.html** template, a **form with the POST method, 4 inscriptions, 4 input buttons for entering data and a send button** has been created
+![](register.png)
+- In the **autho.html** template, a **form with POST method** is created for entering data to **authorize**
+![](login_html.png)
+- In the **autho_success.html** template, 4 **links** and **inscription** are created in the middle of the screen, and if you are an **admin**, a fifth **link with a transition to the admin page** appears
+![](autho.png)
+- In the **shop_app.html** template, objects are created that contain **everything about the product (name, price, discount, picture, price with discount)**
+![](cart1.png)
+![](shop.png)
+- In the template **cart.html** there is a **condition** whether the product is in the cart, a **form** that serves as a **modal window** and a **display of the product** that was moved to * *basket**
+![](cart2.png)
+![](cart3.png)
+- The template **admin.html** looks similar to the template **shop_app.html**, but this template also has **adding a product, removing a product and changing product data**
+![](admin1.png)
+![](admin2.png)
+
+### Views.py files of each of the applications
+1. The **views.py** file of the **main_page** application
+    - In this file, a function is created that **displays** the page (I showed a screenshot of the code above)
+2. The **views.py** file of the **registration_page** application
+    - **The function** of this file is **required not only for displaying the page**, but also for **creating a user** and **writing his data to the User model**
+    ![](viewsreg.png)
+3. The **views.py** file of the **login_page** application
+    - In this **views.py**, **check** whether the user entered his **password** correctly or not, **checking user authorization** and **moving** to the **successful authorization** page are performed
+    ![](viewslogin.png)
+
+4. The **views.py** file of the **success_authorization** application
+    - In this file **user check** for **admin** is created
+    ![](viewssuccess.png)
+5. The **views.py** file of the **Shop_page** application
+    - This file **reads** data from an **excel** table and **creates** a **product** object based on this data. Also in this file there is a **check for the user administrator**
+    ![](viewshop.png)
+    ![](viewsshop1.png)
+
+6. The **views.py** file of the **cart_page** application
+    - In this file, when **adding a product** to the cart, the **id** of the product is **added to the cookie**. Next, when the user **presses** the **place order** button, the data is **read** and a product is **created** based on this data and** a message is **sent** to **mail and in bot telegram to seller**
+    ![](viewscart.png)
+    ![](viewscart1.png)
+7. The **views.py** file of the **admin_page** application 
+    - In this file, we **added** **new** products and **recorded** them in the database, **deleted** products and **edited** product data
+    ![](viewsadmin.png)
+    ![](viewsadmin1.png)
+    ![](viewsadmin2.png)
+
+### File description **models.py** 
+In the file **models.py** we created **3 models** namely:
+- **User** (users)
+    - In this database we created **fields** for **name**, **password** and **administrator**
+- **Product** (goods)
+    - This database is created to **write** there **name, price, discount, description and storage capacity**
+- **Cart**
+    - This database is **the same** as the **Product** model, but the product is **added** here only after **ordering**
+![](models.png)
+![](models1.png)
+
+### Carrying out migrations
+To carry out migrations, you must:
+1. **Make sure** that **everything** has been created in the project to **conduct migrations**
+2. **Open the terminal** and **go** to the folder where the **settings.py** file was **created**
+3. **Enter** the **command** in the terminal for **initialization** if migrations are being carried out **for the first time**:
+```
+flask --app settings db init
+```
+4. **Enter** the **command** for **migrations** in the terminal:
+```
+flask --app settings db migrate
+```
+5. **Enter** the **command** in the terminal to update **migrations**:
+```
+flask --app settings db upgrade
+```
+6. **Migration successfully completed!**
+
+### Database
+
+**Database** - structured **information** that is managed by **database management systems**
+
+**Why SQLite3?**
+People usually choose **SQLite3** because it is **easy to work with** and **customize**, has **great performance** **for small** and **medium applications**, has **encryption** and **free**
+
+#### Id in the database
+**What is the role of id in the database?**
+**ID** - a **column** that guarantees the **uniqueness** of each object in the database
+
+### JavaScript
+There are several **JS files** in our project. Let's start with **home.js** in this file we **learn the cookie** and **create the condition**. If **cookie is 0**, i.e. **empty**, then we **hide** our object with **number of products**, if **more than 0** - we **add design to it and we show**
+![](homejs.png)
+
+The next file is **set_cookies.js**. This file **has the same condition** as in **home.js** and a **function** to **find out the price** including the **discount** of the item
+![](cookie.png)
+
+The file **workCookies.js** is a file in which there is a **condition** that was in **home.js** and a **function** that was in **set_cookies.js**, but it is not all. The file **contains 2 new functions** that are required for **adding** or **subtracting** the product and a function that **changes the display** of the **modal** **window** **order processing **
+![](workcookies.png)
+![](workcookies1.png)
+
+The last file is **admin.js**. This file also contains **home.js** and **set_cookie.js** functions, but these are not all functions. In this file there is a **change of product data**. For example **pictures** or **names**
+![](adminjs.png)
+![](adminjs2.png)
+
+### Conclusions
+
+Thanks to this project, we learned to **create sites**, **work with migrations**, **repeated telebot** and **started to learn JavaScript** and **HTML**.
+I think the project is **very useful**, especially for **newbies** like us, because this project has all the **necessary features** to **create** a **full-fledged website for a customer**. Sometimes it was difficult to work on it, but the project is very **important** and **useful**, especially for **newbies**. Personally, this project is **very useful** for me.
