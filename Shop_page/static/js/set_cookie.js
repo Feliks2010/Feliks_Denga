@@ -1,32 +1,47 @@
+//  Знаходимо об'єкт по класу
 const buttonsBuy = document.querySelectorAll(selectors = ".buy")
-
+// Перебираємо всі наші кнопки
 for (let count = 0; count < buttonsBuy.length; count++){
+    // Обращаємось до певної кнопки
     let button = buttonsBuy[count]
+    // Додаємо слухач кліку на кнопку
     button.addEventListener(
+        // Вказуємо тип події
         type = "click",
+        // Створюємо функцію
         listener = function(event) {
+            // Якщо cookie не пусті
             if (document.cookie != ""){
+                // Дізнаємося теперешній товар
                 let current_product = document.cookie.split("=")[1]
+                // Створюємо id
                 let id_product = current_product + " " + button.id
+                // Записуємо в cookie id товару
                 document.cookie = `product = ${id_product}; path = /`
+                // Перезавантаження сторінки
                 window.location.reload()
             }
-
+            // Інакше
             else{
+                // Записуємо в cookie id кнопки
                 document.cookie = `product = ${button.id}; path = /`
             }
         }
     )
 }
-
-
+// Знаходимо по класу об'єкти
 const classProduct = document.querySelectorAll(".product")
+// Перебираємо кожний об'єкт
 for(let count = 0; count< classProduct.length; count++){
+    // Створюємо змінну, де храниться ціна товару
     let price = classProduct[count].querySelector(".price")
+    // Беремо ціну з сайту
     let price1 = price.innerHTML.split(" ")[0]
+    // Дізнаємося знижку
     let discount = classProduct[count].querySelector(".discount")
+    // Дізнаємося знижку, яка на сайті
     let discount1 = discount.innerHTML.split(" ")[1].split("%")[0]
-
+    // Перезапизуємо ціну з врахуванням знижки
     price.innerHTML = Math.floor(Number(price1 - price1 * discount1 / 100)) + " грн"
 }
 let clickCount = 0; 

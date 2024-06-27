@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
         <style>
             #counter {
@@ -19,7 +18,6 @@
                 <button id="availability" name = "del" value = "{{product.id}}">
                     <img src="{{ url_for('admin.static', filename='images/delete.png') }}" alt="">
                 </button>
-                
             </form>
             {% if product.start_count == 1 or product.start_count == None %}
                 <img id = "product" src="{{ url_for('shop_app.static', filename='images/' + product.name + '.png') }}" alt="">
@@ -28,23 +26,19 @@
             {% else %}
                 <img id = "product" src="{{ url_for('shop_app.static', filename='images/' + product.name + '.png') }}" alt="">
             {% endif %}
-
             <img class="pensilForImage" src="{{ url_for('admin.static', filename='images/pensil.png') }}" id = "{{product.id}}" alt="">
-            
             <button class="buy" id="{{ product.id }}" onclick="incrementCounter()">Купити</button>
             <button id="gb" onclick="addCSS()">{{product.description}}</button> 
             <button id="gb1" onclick="changeColor()">{{product.gb}}</button>
             <button id="gb2">1 Тб</button>
             <h1 class="discount" id="discount">Знижка {{product.discount}}%</h1>
             <h1 class="priceWithoutDiscount">{{product.price}} грн</h1>
-
             <img class="pensilForName" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
             <img class="pensilFor" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
             <img class="pensilForDiscount" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
             <img class="pensilForGb" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
             <img class="pensilForGb1" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
             <img class="pensilForGb2" id = "{{product.id}}" src="{{ url_for('admin.static', filename='images/pensil.png') }}" alt="">
-
             <div class="frame-modal" style= "display: none;">
                 <form method="post" class="modal" enctype="multipart/form-data"> 
                     <h1 class = "changeH1"></h1> 
@@ -52,9 +46,6 @@
                     <button type="submit" name="submit-change" class="submit-change"  id = "{{product.id}}"value="">Save</button>
                 </form>
             </div>
-                 
-                <!-- <script src = "{{ url_for('admin.static', filename = 'js/editImage.js') }}" defer></script> -->
-        
         </div>
         {% endfor %}
         <h1 id="counter">0</h1>
@@ -88,8 +79,6 @@
                     <button id = "buy"type="submit">SEND</button>
                 </form>
             </div>
-
         </div>
-
     <script src = "{{ url_for('admin.static', filename = 'js/admin.js') }}" defer></script>
 {% endblock %}

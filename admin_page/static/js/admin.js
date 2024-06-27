@@ -76,44 +76,65 @@ for (let count = 0; count < cookie.split(" ").length; count ++){
     }
 
 }
-
+// Знаходимо об'єкт за класом
 const buttonsImage = document.querySelectorAll(".pensilForImage")
-
+// Перебираємо масив
 for (let count = 0; count < buttonsImage.length; count++){
+    // Знаходимо певну кнопку
     let button = buttonsImage[count]
+    // Створюємо функцію
     button.addEventListener(
+        // Додаємо подію
         type = "click",
+        // Створюємо функцію
         listener = (event) => {
-            console.log('ok')
+            // Знаходимо об'єкт по класу
             let input = document.querySelector(selectors = ".input-data")
+            // Змінюємо display модального вікна на flex
             document.querySelector(selectors = ".frame-modal").style.display = "flex"
+            // Змінюємо текст 
             let h1 = document.querySelector(selectors = ".changeH1").innerHTML = "CHANGE IMAGE: "
+            // Задаємо стилі
             input.style.border = "white"
             input.style.borderRadius = "0px"
+            // Змінюємо тип input на file
             input.type = "file"
+            // Записуємо id
             input.id = button.id
+            // Кажемо, що це image і можуть бути всі типи (png,jpg...)
             input.accept = "image/*"
+            // Змінюємо ім'я
             input.name = "image"
+            // Змінюємо value
             document.querySelector('.submit-change').value = `image-${button.id}`
         }
     )
 }
-
+// Створюємо об'єкт за класом
 const buttonsSumbit = document.querySelectorAll(".pensilFor")
-
+// Перебираємо кожен об'єкт
 for (let count = 0; count < buttonsSumbit.length; count++){
+    // Дізнаємось певну кнопку
     let button = buttonsSumbit[count]
+    // Створюємо функцію
     button.addEventListener(
+        // Задаємо подію
         type = "click",
+        // Створюємо функцію
         listener = (event) => {
-            console.log('ok')
+            // Знаходимо об'єкт модального вікна
             let input = document.querySelector(selectors = ".input-data")
+            // Змінюємо текст
             let h1 = document.querySelector(selectors = ".changeH1").innerHTML = "CHANGE TEXT: "
+            // Змінюємо display модального вікна на flex
             document.querySelector(selectors = ".frame-modal").style.display = "flex"
-            
+            // Змінюємо тип 
             input.type = "text"
+            // Задаємо id
             input.id = button.id
+            // Змінюємо ім'я
             input.name = "text"
+            // Задаємо value
             document.querySelector('.submit-change').value = `price-${button.id}`
         }
     )

@@ -1,3 +1,4 @@
+# Імпортування потрібних даних
 import registration_page, login_page
 from .settings import project_login
 from main_page import home, render
@@ -8,13 +9,15 @@ from cart_page import cart, render_cart
 from admin_page.app import admin
 from admin_page.views import render_admin
 import admin_main_page
-
-
+# Додавання посилання додатку
 home.add_url_rule(
     rule="/",
     view_func= render
 )
-
+# Додавання до головного додатку наш Blueprint
+project_login.register_blueprint(
+    blueprint=home
+)
 success_reg.add_url_rule(
     rule= "/Registration/Success_Registration/",
     view_func=render_success
@@ -22,9 +25,7 @@ success_reg.add_url_rule(
 project_login.register_blueprint(
     blueprint= success_reg
 )
-project_login.register_blueprint(
-    blueprint=home
-)
+
 registration_page.reg_app.add_url_rule(
     rule = '/Registration/',
     view_func = registration_page.show_reg_page,

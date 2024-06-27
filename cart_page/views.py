@@ -38,8 +38,9 @@ def render_cart():
                         product.gb1 = count_products
                         # Записуємо товар в список товарів
                         products.append(product)
+                        # Якщо сервер отримав метод POST
                         if flask.request.method == 'POST':
-                            
+                            # Створення змінних, в які записується значення, які ввів користувач в input-кнопки
                             name = flask.request.form["name"]
                             surname = flask.request.form["surname"]
                             phone = flask.request.form["phone"]
@@ -47,9 +48,11 @@ def render_cart():
                             city = flask.request.form["city"]
                             department = flask.request.form["department"]
                             wish = flask.request.form["wish"]
+                            # Беремо дані з бази даних
                             product_name = product.name
                             product_price = product.price
                             product_discount = product.discount
+                            # За цими даними створюємо продукт
                             product_cart = Cart(
                                             name_cart = product_name,
                                             price_cart = int(product_price - (product_price * product_discount) / 100),
@@ -57,11 +60,15 @@ def render_cart():
                                             count_cart = count_products,
                                             user_cart = name,
                                             )
+                            # Додаємо продукт в базу даних
                             DATABASE.session.add(product_cart)
+                            # Зберігаємо зміни в базі даних
                             DATABASE.session.commit()
-                            print(products)
+                            # Створення змінної повідомлення
                             message_text = ""
+                            # Перебираємо список товарів
                             for product in products:
+                                # Відсилаємо повідомлення
                                 message_text += f"Надійшло замовлення від {name} {surname}!\nІм'я товару: {product.name}\nЦіна: {product.price} \nЗнижка: {product.discount}\nНомер телефона: {phone}\nЕлектронна адреса: {email} \nМісто: {city}\nДодаткові побажання: {wish}"
                             message = Message(
                                 "message order",
@@ -73,10 +80,12 @@ def render_cart():
                             mail.send(message)
                             count = 0
                             if count == 0:
+                                # Відсилаємо повідомлення в телеграм
                                 bot.send_message(-1002243362537, f"Надійшло замовлення від {name} {surname}! \nНомер телефона: {phone}\nПошта: {email}\nМісто: {city}\nВідділеня: {department}\nПобажання: {wish}",message_thread_id=40) 
                             count += 1
+                            # Знаходимо продукт по id
                             product_cart_id = Cart.query.get(id)
-                            
+                            # Відправляємо повідомленя про замовлення
                             bot.send_message(-1002243362537, f"\nНазва продукту: {product_cart_id.name_cart}\nЦіна: {product_cart_id.price_cart}\nЗнижка: {product_cart_id.discount_cart}\nКількість:{product_cart_id.count_cart}",message_thread_id=40, reply_markup= keyboard_cart)
         # Створюємо змінну для подальшої роботи з html
         is_admin = False
@@ -85,8 +94,6 @@ def render_cart():
             # Задаємо змінній нове значення
             is_admin = current_user.is_admin
         # Відображаємо сторінку
-        
-            
         return flask.render_template(template_name_or_list="cart.html", products=products, first_name = current_user.name, is_admin = is_admin)
     except:
         return "Error"    

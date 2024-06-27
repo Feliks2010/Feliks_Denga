@@ -1,24 +1,25 @@
+// Створення змінної, в якої храниться cookie
 let cookie = document.cookie
-
+// Якщо cookie існує
 if (cookie){
+    // Перебираємо кожний елемент масиву cookie
     for (let count = 0; count < cookie.split('')[1].split(';')[0].split(" ").join("").length; count++){
     let cookie = document.cookie;
-
+    // Створюємо змінну, де храниться cookie дані
     let cookieValue = cookie.split('=')[1].split(';')[0].split(" ").join("");
-    
-
+    // Дізнаємося довжину cookie
     let length = cookieValue.length;
-    
-    
+    // Знаходимо об'єкт по класу
     const count_products = document.querySelector('.count_products');
-    
-    let counterElement = 0
+    // Записуємо в змінну довжину cookie
     count_products.textContent = length;
+    // Якщо довжина cookie = 0, то колір кількості продуктів не видно
     if (length == 0){
         count_products.style.color = 'white';
     } 
-
+    // Інакше
     else {
+        // Додаємо дизайн 
         count_products.style.position = 'absolute';
         count_products.style.top = '15px';
         count_products.style.left = '475px';
@@ -33,14 +34,15 @@ if (cookie){
         count_products.style.backgroundColor = '#EFCB4A';
         count_products.style.fontSize = '20px';
         count_products.style.color = "black";
-
     }
 }}
+// Інакше
 else{
+    // Знаходимо об'єкт по класу
     const count_products = document.querySelector('.count_products');
-    
-    let counterElement = 0
+    // Записуємо в об'єкт довжину cookie
     count_products.textContent = length;
+    // Змінюємо колір на білий
     count_products.style.color = 'white';
 }
 let cookies = document.cookie

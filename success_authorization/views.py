@@ -1,3 +1,4 @@
+# Імпортуємо необхідні модулі
 import flask
 from registration_page.models import User
 from flask_login import current_user
@@ -5,7 +6,6 @@ name = None
 # Створюємо функцію для відображення сторінки
 def render_success():
     try:
-        name = flask.session.get('log')
         # Створюємо змiнні для подальшої роботи з html
         is_name = False
         is_authenticated = False
@@ -17,6 +17,7 @@ def render_success():
             is_authenticated = True
             is_name = current_user
         # Відображаємо сторінку
-        return flask.render_template(template_name_or_list = "autho_succes.html", first_name = current_user.name,is_admin = is_admin, is_authenticated = is_authenticated, is_name = is_name)
+        return flask.render_template(template_name_or_list = "autho_succes.html", first_name = current_user.name,
+                                     is_admin = is_admin, is_authenticated = is_authenticated, is_name = is_name)
     except:
         return "Error"

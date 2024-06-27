@@ -1,62 +1,80 @@
+// Створюємо функцію для перезавантаження сторінки
 function reload(){
     window.location.reload();
 }
+// Дізнаємося cookie
 cookie = document.cookie
+// Знаходимо об'єкти за класом
 const listButtonsMinus = document.querySelectorAll(".minus");
 const listAllPrice = document.querySelectorAll(".price");
 const listAllCount = document.querySelectorAll(".product_count");
 const allPrice = document.querySelector(".allPrice")
-
+// Перебираємо кнопки мінус
 for (let count = 0; count < listButtonsMinus.length; count++) {
-    // allPrice.innerHTML = Number(classProduct[count].querySelector(".price").innerHTML.split(" ")[0]) * Number(listAllCount[count].innerHTML) + " грн"
-
+    // Знаходимо певну кнопку з масива ListButtonMinus
     let button = listButtonsMinus[count];
+    // Знаходимо певну кнопку з масива ListAllCount
     let countProductElement = listAllCount[count];
-    
+    // Створюємо функцію
     button.addEventListener("click", function(event) {
+        // Дізнаємося значення cookie
         let cookies = document.cookie.split("=")[1].split(" ");
+        // Знаходимо id кнопки
         let button_id = button.id.split("-")[1];
-
+        // Перевіряємо чи в cookie є id кнопки
         if (cookies.includes(button_id)) {
+            // Видаляємо id з cookie
             cookies.splice(cookies.indexOf(button_id), 1);
+            // Зменшуємо кількість товару на 1
             countProductElement.textContent = Number(countProductElement.textContent) - 1;
+            // Перезавантаження сторінки
             reload()
         }
-        
+        // Якщо кількість продуктів дорівнює 0
         if (countProductElement.textContent == "0") {
+            // Видаляємо об'єкт з класу product
             document.querySelector(`#product-${button_id}`).remove();
         }
-        
         document.cookie = `product=${cookies.join(" ")}; path=/`;
     });
 
 }
 
-
+// Створюємо кнопку за класом
 const listButtonsPlus = document.querySelectorAll(".plus")
-
+// Перебираємо ListButtonsPlus
 for(let count = 0; count <  listButtonsPlus.length; count++){
+    // Знаходимо певну кнопку в масиві ListButtonsPlus
     let button_plus = listButtonsPlus[count]
+    // Знаходимо певну кнопку в масиві ListButtonMinus
     let button_minus = listButtonsMinus[count]
-
+    // Додаємо функцію
     button_plus.addEventListener(
+        // Вказуємо подію
         type = "click", 
+        // Створюємо функцію
         listener = function(
             event
         ){
+            // Дізнаємося значення cookie
             let cookies = document.cookie.split("=")[1].split(" ")
+            // Знаходимо id кнопки
             let button_id = button_plus.id.split("-")[1]
+            // Дізнаємося теперешній товар
             let current_product = document.cookie.split("=")[1]
+            // Знаходимо id товару
             let id_product = current_product + " " + button_id
-            // document.cookie = `${id_product};path = /`
+            // Записуємо в ListAllCount один товар
             listAllCount[count] = listAllCount[count] + 1
-
+            // Якщо id кнопки в cookie або cookie дорівнює id кнопки
             if (button_id in cookies || cookies == button_id){
+                // Видаляємо id з cookie
                 cookies.splice(cookies.indexOf(button_id), 1)
+                // Додаємо id
                 button_minus.previousElementSibling.textContent = Number(button_minus.previousElementSibling.textContent) + 1
                 reload()
             }
-
+            // Оновлюємо cookie
             document.cookie = `product=${id_product}; path = /` 
         }
     )
